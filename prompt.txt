@@ -1,0 +1,15 @@
+j'ai ce code en python:
+
+from sqlalchemy import create_engine
+connection_string = "postgres:postgres@localhost:5432/covid19_db"
+engine = create_engine(f'postgresql://{connection_string}')
+
+# Confirm tables
+engine.table_names()
+
+confirmed_cleaned_df.to_sql(name='confirmed', con=engine, if_exists='append', index=False)
+recovered_cleaned_df.to_sql(name='recovered', con=engine, if_exists='append', index=False)
+deaths_cleaned_df.to_sql(name='death', con=engine, if_exists='append', index=False)
+
+
+creer un environement docker pour la base de donnees postgresql
