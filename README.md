@@ -1,31 +1,43 @@
-# Covid-19 Infection ETL Project
+# Projet ETL sur les infections COVID-19
 
-## Project Proposal
-Based upon the data compiled by John Hopkins University, I want to explore ''' Insert reasons here'''
-This will be done by extracting the CSV data and migrating it to a PostgreSQL Database.  
+## Proposition de projet
 
-## Project Description
-I found data from `data.data.org` that had been compiled from John Hopkins University.  I filtered the data for March 2020 and evaluated the number of cases with respect to the deaths, recovery, and the confirmed cases.  
+Basé sur les données compilées par l’Université Johns Hopkins, je souhaite explorer ''' Insérer les raisons ici '''.
+Cela sera réalisé en extrayant les données CSV et en les migrant vers une base de données PostgreSQL.
 
-## Finding Data
-All of the data that we used were from `https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases` where they compiled by the John Hopkins University Center for Systems Science and Engineering (JHU CSSE) from various sources that include the World Health Organisations, Hong Kong Department of Health, European Centre for Disease Prevention and Control, etc.  This data is always being updated so we are narrowing the scope to the month of March.
+## Description du projet
 
-## Data Cleanup and Analysis
+J’ai trouvé des données provenant de `data.data.org` qui ont été compilées par l’Université Johns Hopkins. J’ai filtré les données pour le mois de mars 2020 et évalué le nombre de cas en fonction des décès, des guérisons et des cas confirmés.
 
-* TRANSFORMATION STEPS
-My transformation steps I needed to clean the data to be readable, presentable, and easy for me to query in the later stages.  This was done by:
-  * Developing a cleaning function in python that would select the data in the month of March 2020.  This was applied to all datasets that I have.
-  * All of the dates that have in the data sets we treated as values through the `pd.melt` function in Pandas.
-  * Found a way of finding the daily increase with respect to each table.  This value was converted from a float to an integer
+## Recherche des données
 
-* LOADING STEPS
-  * I established a connection to a local PostgreSQL server in our desktop to store the data
-  * I have a schema that just makes the tables and we can confirm it throught `engine.table_names()`
-  * I pushed the Pandas DataFrame to the local PostgreSQL server so I can retrieve and query the data in our Jupyter Notebook
+Toutes les données utilisées proviennent de
+`https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases`,
+où elles sont compilées par le Centre pour la science et l’ingénierie des systèmes de l’Université Johns Hopkins (JHU CSSE) à partir de diverses sources, notamment l’Organisation mondiale de la santé, le Département de la santé de Hong Kong, le Centre européen de prévention et de contrôle des maladies, etc.
+Ces données sont constamment mises à jour, c’est pourquoi nous limitons notre étude au mois de mars.
 
-* Analysis / SQL Queries
-In this part, I want to find:
-  * Top 5 countries with the most/least confirmed cases
-  * Top 5 countries with the most/least deaths
-  * Top 5 countries with the most/least recovered
-  * Date in March with the most confirmed/deaths/recovered
+## Nettoyage et analyse des données
+
+### *Étapes de transformation*
+
+Les étapes de transformation nécessaires pour rendre les données lisibles, présentables et faciles à interroger par la suite ont été les suivantes :
+
+* Développement d’une fonction de nettoyage en Python permettant de sélectionner les données du mois de mars 2020. Cette fonction a été appliquée à tous les ensembles de données.
+* Toutes les dates présentes dans les ensembles de données ont été traitées comme des valeurs à l’aide de la fonction `pd.melt` de Pandas.
+* Mise en place d’une méthode pour calculer l’augmentation quotidienne pour chaque table. Cette valeur a été convertie de float en entier.
+
+### *Étapes de chargement*
+
+* Établissement d’une connexion à un serveur PostgreSQL local sur notre ordinateur afin de stocker les données.
+* Création d’un schéma permettant de générer les tables, vérifié via `engine.table_names()`.
+* Insertion des DataFrames Pandas dans le serveur PostgreSQL local afin de pouvoir récupérer et interroger les données dans notre notebook Jupyter.
+
+### *Analyse / Requêtes SQL*
+
+Dans cette partie, je souhaite déterminer :
+
+* Les 5 pays avec le plus / le moins de cas confirmés
+* Les 5 pays avec le plus / le moins de décès
+* Les 5 pays avec le plus / le moins de guérisons
+* La date du mois de mars avec le plus de cas confirmés / décès / guérisons
+
